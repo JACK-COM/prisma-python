@@ -50,7 +50,7 @@ Once you have your database and `.env` file configured, and have installed `uv`,
 
 Run the following in the project root (where `pyproject.toml` can be found). This will install project dependencies specified in the included `uv.lock` file. See [additional scripts](#additional-uv-scripts) for commands to update one or more dependencies.
 
-If you have `make` installed, you can use the following convenience command:
+If you have `make` installed, you can use the following convenience commands:
 
 ```bash
 # 1. Create a virtual environment target for dependencies
@@ -63,7 +63,7 @@ $. source .venv/bin/activate
 make add-deps
 ```
 
-If you don't have `make` installed, run these two commands:
+If you don't have `make` installed, run these commands:
 
 ```bash
 # 1. create a virtual environment where dependencies will be installed
