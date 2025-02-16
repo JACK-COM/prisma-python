@@ -53,7 +53,14 @@ Run the following in the project root (where `pyproject.toml` can be found). Thi
 If you have `make` installed, you can use the following convenience command:
 
 ```bash
-$. make first-run
+# 1. Create a virtual environment target for dependencies
+$. make venv
+
+# 2. Activate virtual environment
+$. source .venv/bin/activate
+
+# 3. Install dependencies
+make add-deps
 ```
 
 If you don't have `make` installed, run these two commands:
@@ -62,7 +69,10 @@ If you don't have `make` installed, run these two commands:
 # 1. create a virtual environment where dependencies will be installed
 $. uv venv 
 
-# 2. Install dependencies
+# 2. Activate virtual environment
+$. source .venv/bin/activate
+
+# 3. Install dependencies
 $. uv pip install -r pyproject.toml 
 ```
 

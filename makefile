@@ -1,4 +1,4 @@
-.PHONY: all changelog start migrate-start first-run migrate help
+.PHONY: all changelog start migrate-start venv add-deps migrate help
 
 all: ## | List all available commands
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -27,10 +27,13 @@ changelog: ## | Generate a changelog for the last 20 commits
 	git add . && git commit -m "* Updates changelog"
 
 
-first-run: ## | create a virtual environment & install project dependencies
+venv: ## | create a virtual environment & install project dependencies
 	uv venv
-	source .venv/bin/activate
-	uv pip install -r pyproject.toml
+	echo "Run the following command before continuing:"
+	echo "source .venv/bin/activate"
+
+add-deps: ## | Install dependencies
+	# uv pip install -r pyproject.toml
 
 
 start: ## | Start the (dev or production) server (shroter than the "uv" version).
