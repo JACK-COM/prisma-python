@@ -34,8 +34,11 @@ venv: ## | create a virtual environment
 	echo
 	echo "source .venv/bin/activate"
 
-add-deps: ## | Install dependencies
+add-deps: ## | Install dependencies and sync db to schema
+	echo "Installing dependencies with uv..."
 	uv pip install -r pyproject.toml
+	echo "Syncing database and generating prisma client..."
+	uv run prisma db push
 
 
 start: ## | Start the (dev or production) server (shroter than the "uv" version).

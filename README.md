@@ -35,7 +35,11 @@ After initially cloning the repository, follow the steps outlined [**here**](./P
 
 Since this is Python, you will need to set up and activate a new virtual environment before adding dependencies.
 
-Run the following in the project root (where `pyproject.toml` can be found) to install project dependencies from the included `uv.lock` file. See [additional scripts](#additional-uv-scripts) for commands to update one or more dependencies.
+Run the following in the project root (where `pyproject.toml` can be found) to install project dependencies from the included `uv.lock` file.\
+Note: this will also sync your database to the contents of your `schema.prisma` file, as well as generate the Prisma client for you. As such, it will fail unless you have completed [**pre-setup**](./PRE_SETUP.md), i.e.:
+
+1. Create a database
+2. Add database url as `DB_URL` environment variable
 
 If you have `make` installed, you can use the following convenience command:
 
@@ -68,6 +72,8 @@ If you don't have `make`, use the following command:
 ```bash
 $. uv run dev.py
 ```
+
+See [additional scripts](#additional-uv-scripts) for commands to update one or more dependencies.
 
 ### 4. Table Changes and Database Migrations
 
