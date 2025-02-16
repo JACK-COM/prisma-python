@@ -6,6 +6,16 @@ Generated on Saturday, February 15, 2025
 
 Listing changes from the last 20 commits:
 
+* updates add-deps command to generate prisma client
+
+* updates default db_url environment variable key
+
+* updates readme
+
+* updates README
+
+* Updates changelog
+
 * Updates changelog
 
 * updates makefile
@@ -49,10 +59,4 @@ Listing changes from the last 20 commits:
 * renames prisma file due to export conflict; registers prisma-client instance to avoid explosive failure
 
 * renames 'apis' primary export
-
-* updates readme
-
-* refined custom git-changelog make script
-
-* one last try
 
