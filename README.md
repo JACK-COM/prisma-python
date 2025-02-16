@@ -108,13 +108,14 @@ $. fastapi dev
 Documentation links are provided for each dependency.
 
 - [`uv`](https://docs.astral.sh/uv/): dependency and project manager.
+- [GNU `make`](https://www.gnu.org/software/make/manual/make.html): For running makefiles.
 - [`python-dotenv`](https://pypi.org/project/python-dotenv/): for reading `.env` files in project
 - [`fastapi`](https://fastapi.tiangolo.com/): a high performance API framework.
 - [`py_webauthn`](https://pypi.org/project/webauthn/): Python3 server-side [WebAuthN API implementation](https://www.w3.org/TR/webauthn-2/). Enables passphrase authentication.
 - [`prisma` (**Prisma Client Python**)](https://prisma-client-py.readthedocs.io/en/stable/): a Python port of a code-first ORM framework for NodeJS backends.
   - For the full API, visit the Prisma ORM docs [**here**](https://www.prisma.io/)
 - [`bump-my-version`](https://callowayproject.github.io/bump-my-version/): semantic project version bumping with `make`
-- [GNU `make`](https://www.gnu.org/software/make/manual/make.html): For running makefiles. Probably already exists on your system.
+- [`git-changelog`](https://pypi.org/project/git-changelog/): for generating project release changelogs.
 
 ### What is uv?
 

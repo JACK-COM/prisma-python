@@ -4,8 +4,9 @@
 # Variable BUMP defaults to 'patch' (v1.2.3 -> v1.2.4)
 .PHONY: release changelog
 BUMP=patch
-release:
+release: 
 	uvx bump-my-version bump ${BUMP}
 
+# Generate a changelog using "angular" template and pipe output to CHANGELOG.md
 changelog:
-	git log --oneline --decorate
+	git-changelog -io CHANGELOG.md -c angular
