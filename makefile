@@ -33,7 +33,10 @@ changelog: ## | "Generate a changelog for the last 20 commits"
 	# Print the last 20 commit subject-lines to changelog
 	# git log -20 --no-merges --format=%B --pretty=%s >> CHANGELOG.md
 	git log -20 --no-merges --format=%B >> CHANGELOG.md
-	echo "Changelog generated."
+
+	echo "Changelog generated.\n"
+	echo "Committing changelog:"
+	git add . && git commit -m "* Updates changelog"
 
 start: ## | "Start the (dev or production) server (shroter than the "uv" version)."
 	uv run dev.py
