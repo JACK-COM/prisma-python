@@ -27,9 +27,10 @@ changelog: ## | Generate a changelog for the last 20 commits
 	git add . && git commit -m "* Updates changelog"
 
 
-venv: ## | create a virtual environment & install project dependencies
+venv: ## | create a virtual environment
 	uv venv
-	echo "Run the following command before continuing:"
+	echo "Environment created. Run the following command before continuing:"
+	echo
 	echo "source .venv/bin/activate"
 
 add-deps: ## | Install dependencies
