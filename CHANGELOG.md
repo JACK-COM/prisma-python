@@ -1,10 +1,14 @@
 # Changelog
 
-Generated on Saturday, February 15, 2025
+Generated on Sunday, February 16, 2025
 
 ## Latest changes
 
 Listing changes from the last 20 commits:
+
+* updates readme and pre-setup
+
+* Updates changelog
 
 * updates add-deps command to generate prisma client
 
@@ -47,16 +51,4 @@ Listing changes from the last 20 commits:
 * Updates changelog
 
 * removes bumpversion.toml
-
-* Updates changelog
-
-* adds list-all command to makefile
-
-* renames 'apis' directory to 'routes'
-
-* adds ROUTES.README.md
-
-* renames prisma file due to export conflict; registers prisma-client instance to avoid explosive failure
-
-* renames 'apis' primary export
 
