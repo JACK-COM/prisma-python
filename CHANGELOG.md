@@ -6,6 +6,10 @@ Generated on Saturday, February 15, 2025
 
 Listing changes from the last 20 commits:
 
+* updates readme and makefile
+
+* Updates changelog
+
 * removes bumpversion.toml
 
 * Updates changelog
