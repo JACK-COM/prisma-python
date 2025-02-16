@@ -27,7 +27,7 @@ changelog: ## | Generate a changelog for the last 20 commits
 	git add . && git commit -m "* Updates changelog"
 
 
-first-run: ## | create a virtual environment & nstall project dependencies
+first-run: ## | create a virtual environment & install project dependencies
 	uv venv
 	uv pip install -r pyproject.toml
 
@@ -40,6 +40,8 @@ migrate-start: ## | Run a db migration BEFORE starting the server.
 	uv run dev.py --migrate
 
 
-# Run a db migration WITHOUT starting the server.
-migrate:
+migrate: ## | Run a db migration WITHOUT starting the server.
 	uv run scripts/db_migrate.py
+
+upgrade: ## | Upgrade ALL project dependencies at once
+	uv lock --upgrade
