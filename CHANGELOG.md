@@ -6,6 +6,10 @@ Generated on Saturday, February 15, 2025
 
 Listing changes from the last 20 commits:
 
+* removes bumpversion.toml
+
+* Updates changelog
+
 * adds list-all command to makefile
 
 * renames 'apis' directory to 'routes'
