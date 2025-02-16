@@ -12,9 +12,9 @@ If you are familiar with any of the [dependencies](#dependencies) and/or Python,
   - [Development](#development)
     - [1. Initial Environment Setup](#1-initial-environment-setup)
     - [2. Install project dependencies with uv](#2-install-project-dependencies-with-uv)
-    - [2. Run the project](#2-run-the-project)
+    - [3. Run the project](#3-run-the-project)
       - [Development Environment](#development-environment)
-    - [3. Table Changes and Database Migrations](#3-table-changes-and-database-migrations)
+    - [4. Table Changes and Database Migrations](#4-table-changes-and-database-migrations)
       - [Run prisma migrations WITHOUT starting the server](#run-prisma-migrations-without-starting-the-server)
       - [Start API Server without prisma migrations](#start-api-server-without-prisma-migrations)
   - [Dependencies](#dependencies)
@@ -50,7 +50,7 @@ If you don't have `make` installed, run these three commands:
 $. uv pip install -r pyproject.toml 
 ```
 
-### 2. Run the project
+### 3. Run the project
 
 #### Development Environment
 
@@ -69,7 +69,7 @@ If you don't have `make`, use the following command:
 $. uv run dev.py
 ```
 
-### 3. Table Changes and Database Migrations
+### 4. Table Changes and Database Migrations
 
 To add (or change) your database:
 
