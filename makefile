@@ -5,7 +5,7 @@
 .PHONY: release changelog
 BUMP=patch
 release: 
-	uvx bump-my-version bump ${BUMP}
+	bump-my-version bump ${BUMP}
 
 # Generate a changelog using "angular" template and pipe output to CHANGELOG.md
 changelog:
