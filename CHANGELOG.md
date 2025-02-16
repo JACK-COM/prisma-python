@@ -6,6 +6,14 @@ Generated on Saturday, February 15, 2025
 
 Listing changes from the last 20 commits:
 
+* updates readme
+
+* updates make setup commands and readme
+
+* activate uv venv after creation
+
+* Updates changelog
+
 * adds make command for global dependency update
 
 * adds instructions for setting up virtual environment before installing dependencies.
