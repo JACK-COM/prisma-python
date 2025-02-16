@@ -1,4 +1,5 @@
 .PHONY: all changelog start migrate-start venv add-deps migrate help
+.SILENT:
 
 all: ## | List all available commands
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -34,7 +35,7 @@ venv: ## | create a virtual environment
 	echo "source .venv/bin/activate"
 
 add-deps: ## | Install dependencies
-	# uv pip install -r pyproject.toml
+	uv pip install -r pyproject.toml
 
 
 start: ## | Start the (dev or production) server (shroter than the "uv" version).
