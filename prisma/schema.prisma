@@ -1,0 +1,70 @@
+generator client {
+  provider        = "prisma-client-py"
+  interface       = "asyncio"
+  previewFeatures = ["postgresqlExtensions"]
+  recursive_type_depth = -1
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DB_URL")
+  extensions = [pgcrypto]
+}
+
+enum AuthType {
+  email
+  facebook
+  google
+  apple
+}
+
+enum Authenticator {
+  facebook
+  google
+  twitter
+  magiclink
+  local
+  other
+}
+
+// A user
+model User {
+  id                  String         @id @default(uuid())
+  email               String         @unique @db.VarChar(255)
+  username            String?        @unique @db.VarChar(255)
+  firstName           String?        @db.VarChar(255)
+  lastName            String?        @db.VarChar(255)
+  photoURL            String?        @db.VarChar(255)
+  resetToken          String?        @db.VarChar(255)
+  resetTokenRequested DateTime?
+  authSource          Authenticator? @default(local) /// Authentication source (e.g. google)
+  lastSeen            DateTime       @default(now()) /// Last login date
+  createdAt           DateTime       @default(now()) /// Account creation and change dates
+  updatedAt           DateTime       @default(now()) @updatedAt
+  password            String?        @db.VarChar(255) /// Account password (optional)
+
+  // Relations
+  Profile Profile?
+  Post    Post[]
+}
+
+model Profile {
+  id       String    @id @default(uuid())
+  socialId String?
+  authType AuthType?
+  userId   String    @unique @db.VarChar(255)
+  User     User      @relation(fields: [userId], references: [id])
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  title     String    @db.VarChar(255)
+  content   String?
+  published Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  deletedAt DateTime?
+
+  userId String @db.VarChar(255)
+  user   User   @relation(fields: [userId], references: [id])
+}
