@@ -1,4 +1,4 @@
-.PHONY: all changelog start migrate-start migrate help
+.PHONY: all changelog start migrate-start first-run migrate help
 
 all: ## | List all available commands
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -27,7 +27,8 @@ changelog: ## | Generate a changelog for the last 20 commits
 	git add . && git commit -m "* Updates changelog"
 
 
-setup: ## | Install project dependencies
+first-run: ## | create a virtual environment & nstall project dependencies
+	uv venv
 	uv pip install -r pyproject.toml
 
 

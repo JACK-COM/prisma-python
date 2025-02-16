@@ -48,18 +48,22 @@ Once you have your database and `.env` file configured, and have installed `uv`,
 
 ### 1. Install project dependencies with uv
 
-This part should be familiar if you're coming from a JS/TS/NPM background.
-
 Run the following in the project root (where `pyproject.toml` can be found). This will install project dependencies specified in the included `uv.lock` file. See [additional scripts](#additional-uv-scripts) for commands to update one or more dependencies.
-
-```bash
-$. uv pip install -r pyproject.toml
-```
 
 If you have `make` installed, you can use the following convenience command:
 
 ```bash
-$. make setup
+$. make first-run
+```
+
+If you don't have `make` installed, run these two commands:
+
+```bash
+# 1. create a virtual environment where dependencies will be installed
+$. uv venv 
+
+# 2. Install dependencies
+$. uv pip install -r pyproject.toml 
 ```
 
 ### 2. Run the project
