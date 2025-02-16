@@ -1,6 +1,17 @@
 # Before you start
 
-The following instructions should prepare you to get started with this project for the first time. You only need to performe them once. The first two steps can be performed in any order, since they are independent of each other.
+The following instructions should prepare you to get started with this project for the first time. You only need to performe them once. I promise it is faster than it looks.
+
+At a high level, you will need to take these steps:
+
+1. Install `uv` globally for working with [dependencies](./README.md#dependencies).
+2. Create a database with your preferred provider. Prisma supports the popular ones (`postgres`, `mongo`, and `sqlite`)
+3. Configure your `.env` file with a path to the new database. The postgres format is described below; visit the [Prisma docs](https://www.prisma.io/) to get the syntax for other providers.
+4. (Optional) modify the `schema.prisma` file with your data models/table definitions.
+
+Once you have your database and `.env` file configured, and have installed `uv`, you can continue with the steps below.
+
+The first two steps can be performed in any order, since they are independent of each other.
 
 ## Table of Contents
 
@@ -13,6 +24,8 @@ The following instructions should prepare you to get started with this project f
     - [A note on database providers](#a-note-on-database-providers)
   - [4. Check your schema file](#4-check-your-schema-file)
     - [Updating your database schema](#updating-your-database-schema)
+  - [5. Create a virtual environment target for dependencies](#5-create-a-virtual-environment-target-for-dependencies)
+    - [6. Activate your virtual environment in VSCode](#6-activate-your-virtual-environment-in-vscode)
 
 ## 1. Create a database
 
@@ -72,3 +85,33 @@ Now let's get inside the python project.
 And now you're MOAR REDDY to get started.
 
 Return to [the main README](./README.md#development) to get you some dependencies.
+
+## 5. Create a virtual environment target for dependencies
+
+If you have `make` installed, create a new virtual environment for `uv`'s dependencies:
+
+```bash
+# 1. Create a virtual environment
+$. make venv
+
+# 2. Activate virtual environment
+$. source .venv/bin/activate
+```
+
+If you don't have `make` installed, use the following commands:
+
+```bash
+# 1. Create a virtual environment
+$. uv venv 
+
+# 2. Activate virtual environment
+$. source .venv/bin/activate
+```
+
+### 6. Activate your virtual environment in VSCode
+
+If you use **VSCode** for development, follow these steps to ensure it can resolve paths to dependencies
+
+1. Open your **Commands** menu (mac: `cmd + shift + P`; windows: `ctrl + shift + p`)
+2. Search for **Python: Select Interpreter** and click on it
+3. A virtual environment target dropdown will open: select the `./.venv/bin/python` environment

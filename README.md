@@ -1,23 +1,20 @@
-# 🐍 *Prisma Python*
+# Mythia API
 
-A project template for a Python-backend API. Uses **Prisma**, **FastAPI**, **DotEnv**, and **WebAuthN**, with **uv** for project and dependency management.\
+Python backend for the Mythia project. Based on [JACKOM's Prisma-Python project template](https://github.com/JACK-COM/prisma-python).\
 See [dependencies](#dependencies) for the list, as well as documentation links.
 
-The repository is similar to [JACK-COM's prisma-express](https://github.com/JACK-COM/prisma-express) starter template for NodeJS projects. It is also heavily inspired by the [prisma-korea/prisma-fastapi](https://github.com/prisma-korea/prisma-fastapi/tree/main) repository, and uses some of the latter's directory structures and starter files while simplifying dependency management.
-
-If you are familiar with any of the [dependencies](#dependencies) and/or Python, it should be straightforward to use.
+If you are familiar with any of the [dependencies](#dependencies) and/or Python, it should be straightforward to use. It should also be somewhat familiar if you have used `Prisma` with JS.
 
 ## Table of Contents
 
-- [🐍 *Prisma Python*](#-prisma-python)
+- [Mythia API](#mythia-api)
   - [Table of Contents](#table-of-contents)
-  - [Getting Started](#getting-started)
-    - [Before you start](#before-you-start)
   - [Development](#development)
-    - [1. Install project dependencies with uv](#1-install-project-dependencies-with-uv)
+    - [1. Initial Environment Setup](#1-initial-environment-setup)
+    - [2. Install project dependencies with uv](#2-install-project-dependencies-with-uv)
     - [2. Run the project](#2-run-the-project)
       - [Development Environment](#development-environment)
-      - [Table Changes and Database Migrations](#table-changes-and-database-migrations)
+    - [3. Table Changes and Database Migrations](#3-table-changes-and-database-migrations)
       - [Run prisma migrations WITHOUT starting the server](#run-prisma-migrations-without-starting-the-server)
       - [Start API Server without prisma migrations](#start-api-server-without-prisma-migrations)
   - [Dependencies](#dependencies)
@@ -28,50 +25,27 @@ If you are familiar with any of the [dependencies](#dependencies) and/or Python,
     - [Resolve dependency paths in VSCode](#resolve-dependency-paths-in-vscode)
     - [Silent migration failure when adding Enums](#silent-migration-failure-when-adding-enums)
 
-## Getting Started
-
-### Before you start
-
-This is only needed for setting things up after you first clone the project. I promise it is faster than it looks.
-
-At a high level, you will need to take these steps [(**details here**)](./PRE_SETUP.md).
-
-1. Install `uv` globally (see [dependencies](#dependencies)) for working with dependencies.
-2. Create a database with your preferred provider. Prisma supports the popular ones (`postgres`, `mongo`, and `sqlite`)
-3. Configure your `.env` file with a path to the new database. The setup document will show the correct format for postgres databases; visit the [Prisma docs](https://www.prisma.io/) to get the syntax for other providers.
-4. (Optional) modify the `schema.prisma` file to reflect the database you want.
-
-Detailed instructions are [**here**](./PRE_SETUP.md).\
-Once you have your database and `.env` file configured, and have installed `uv`, you can continue with the steps below.
-
 ## Development
 
-### 1. Install project dependencies with uv
+### 1. Initial Environment Setup
 
-Run the following in the project root (where `pyproject.toml` can be found). This will install project dependencies specified in the included `uv.lock` file. See [additional scripts](#additional-uv-scripts) for commands to update one or more dependencies.
+After initially cloning the repository, follow the steps outlined [**here**](./PRE_SETUP.md) to set up you environment and database, as well as configure your `.env` file.
 
-If you have `make` installed, you can use the following convenience commands:
+### 2. Install project dependencies with uv
+
+Since this is Python, you will need to set up and activate a new virtual environment before adding dependencies.
+
+Run the following in the project root (where `pyproject.toml` can be found) to install project dependencies from the included `uv.lock` file. See [additional scripts](#additional-uv-scripts) for commands to update one or more dependencies.
+
+If you have `make` installed, you can use the following convenience command:
 
 ```bash
-# 1. Create a virtual environment target for dependencies
-$. make venv
-
-# 2. Activate virtual environment
-$. source .venv/bin/activate
-
-# 3. Install dependencies
 make add-deps
 ```
 
-If you don't have `make` installed, run these commands:
+If you don't have `make` installed, run these three commands:
 
 ```bash
-# 1. create a virtual environment where dependencies will be installed
-$. uv venv 
-
-# 2. Activate virtual environment
-$. source .venv/bin/activate
-
 # 3. Install dependencies
 $. uv pip install -r pyproject.toml 
 ```
@@ -81,11 +55,7 @@ $. uv pip install -r pyproject.toml
 #### Development Environment
 
 Run the following in the project root (where `pyproject.toml` can be found).\
-This will run the application in dev mode.
-
-```bash
-$. uv run dev.py
-```
+This will run the application in dev mode on port `8000`.
 
 If you have `make` installed, you can use the following convenience command:
 
@@ -93,26 +63,34 @@ If you have `make` installed, you can use the following convenience command:
 $. make start
 ```
 
-#### Table Changes and Database Migrations
+If you don't have `make`, use the following command:
+
+```bash
+$. uv run dev.py
+```
+
+### 3. Table Changes and Database Migrations
 
 To add (or change) your database:
 
 1. Modify the `schema.prisma` file (add tables/columns/etc) and save your changes
 2. Restart the app and include the `--migrate` flag to apply changes to the database before the server starts up.
 
+This allows you to sync your changes by simply re-starting the dev server. Migration history will be squashed into a single file, so that the `migrations/` directory stays small and manageable.
+
 `dev.py` accepts an optional `--migrate` boolean flag that triggers a prisma migration to sync your db with the `schema.prisma` file before starting up. (see below)
 
-```bash
-$. uv run dev.py --migrate
-```
-
-If you have `make` installed, you can use the following convenience command for the same thing:
+If you have `make` installed, you can use the following convenience command:
 
 ```bash
 $. make migrate-start
 ```
 
-This allows you to sync your changes by simply re-starting the dev server.
+If you don't have `make` installed, run this command instead:
+
+```bash
+$. uv run dev.py --migrate
+```
 
 #### Run prisma migrations WITHOUT starting the server
 
@@ -130,19 +108,23 @@ $. make migrate
 
 #### Start API Server without prisma migrations
 
-If you don't want to use the prisma migration script, any of the following commands will start the server:
+If you don't want to use the prisma migration script, any of the following commands will start the server. With make installed:
 
 ```bash
-# 1. Shortest: use "make" command to call fastapi with uv
+# call fastapi with uv
 $. make start
+```
 
-# 2. Preferred: call fastapi with uv (used by "make start" above)
+Without `make` installed, you can use any ONE of the following:
+
+```bash
+# 1. Preferred: call fastapi with uv (used by "make start" above)
 $. uv run fastapi dev main.py
 
-# 3. Call fastapi directly with entry file:
+# 2. Call fastapi directly with entry file:
 $. fastapi dev main.py
 
-# 4. Call fastapi directly without entry file (assumes it is "main.py")
+# 3. Call fastapi directly without entry file (assumes it is "main.py")
 $. fastapi dev
 ```
 
