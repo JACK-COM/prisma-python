@@ -1,12 +1,29 @@
-# Make a release commit + tag, creating Changelog entry
-# Set BUMP variable to any of supported (major, minor, patch)
-# See 'bump-my-version show-bump' for options
-# Variable BUMP defaults to 'patch' (v1.2.3 -> v1.2.4)
-.PHONY: release changelog
-BUMP=patch
-release: 
-	bump-my-version bump ${BUMP}
+.PHONY: changelog
 
 # Generate a changelog using "angular" template and pipe output to CHANGELOG.md
+# Format is:
+# 
+# # Changelog
+# 
+# Generated on (date)
+# 
+# ## Latest changes
+# 
+# Listing changes from the last 20 commits:
+# 
+# [ changes ]
 changelog:
-	git-changelog -io CHANGELOG.md -c angular
+	echo "# Changelog" > CHANGELOG.md
+	echo "" >> CHANGELOG.md
+	echo "Generated on `date +'%A, %B %d, %Y'`" >> CHANGELOG.md
+	echo "" >> CHANGELOG.md
+
+	echo "## Latest changes" >> CHANGELOG.md
+	echo "" >> CHANGELOG.md
+
+	echo "Listing changes from the last 20 commits:" >> CHANGELOG.md
+	echo "" >> CHANGELOG.md
+
+	# Print the last 20 commit subject-lines to changelog
+	git log -20 --no-merges --format=%B --pretty=%s >> CHANGELOG.md
+

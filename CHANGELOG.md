@@ -1,13 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+Generated on Saturday, February 15, 2025
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+## Latest changes
 
-<!-- insertion marker -->
-## Unreleased
+Listing changes from the last 20 commits:
 
-<small>[Compare with latest]()</small>
-
-<!-- insertion marker -->
+* one last try
+* new CHANGELOG template + make command
+* update make-changelog command
+* adds bump-my-version
+* INITIAL COMMIT
