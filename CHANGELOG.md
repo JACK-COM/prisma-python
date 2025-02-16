@@ -6,6 +6,8 @@ Generated on Saturday, February 15, 2025
 
 Listing changes from the last 20 commits:
 
+* updates readme
+* refined custom git-changelog make script
 * one last try
 * new CHANGELOG template + make command
 * update make-changelog command

@@ -2,9 +2,9 @@ from typing import Union
 from contextlib import asynccontextmanager
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi import FastAPI
-
-from src.apis import apis
-from src.prisma import prisma
+# Internal deps
+from src.routes import routes
+from src.prisma_client import prisma
 
 
 @asynccontextmanager
@@ -23,7 +23,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(GZipMiddleware, minimum_size=1000)
-app.include_router(apis, prefix="/apis")
+app.include_router(routes, prefix="/v1")
 
 
 @app.get("/items/{item_id}")

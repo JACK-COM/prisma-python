@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from prisma.models import User
 from pydantic import BaseModel
 from src.models.scalar import Gender
-from src.prisma import prisma
+from src.prisma_client import prisma
 from src.utils.auth import (
     encryptPassword,
     signJWT,
@@ -54,7 +54,7 @@ class SignUp(BaseModel):
 
 @router.post("/auth/sign-up", tags=["auth"])
 async def sign_up(user: SignUp):
-    password = encryptPassword(user.password)
+    # password = encryptPassword(user.password)
     created = await prisma.user.create(
         {
             "email": user.email,

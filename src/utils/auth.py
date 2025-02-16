@@ -1,6 +1,11 @@
+"""Auth Utilities
+
+Collection of helper functions for performing authentication: JWT
+encoding/decoding, as wwell as password encryption and verification.
+"""
+
 from datetime import datetime, timedelta, timezone
 
-# from typing_extensions import Self
 from typing import Dict
 from fastapi import Request, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
