@@ -6,6 +6,10 @@ Generated on Saturday, February 15, 2025
 
 Listing changes from the last 20 commits:
 
+* updates makefile
+
+* Updates changelog
+
 * updates readme
 
 * Updates changelog
@@ -51,12 +55,4 @@ Listing changes from the last 20 commits:
 * one last try
 
 * new CHANGELOG template + make command
-
-* update make-changelog command
-
-* updates readme
-
-* adds bump-my-version
-
-* adds makefile commands for package bump, generating changelog
 
