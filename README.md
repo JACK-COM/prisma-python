@@ -14,8 +14,8 @@ If you are familiar with any of the [dependencies](#dependencies) and/or Python,
     - [2. Install project dependencies with uv](#2-install-project-dependencies-with-uv)
     - [3. Run the project](#3-run-the-project)
       - [Development Environment](#development-environment)
-    - [4. Table Changes and Database Migrations](#4-table-changes-and-database-migrations)
-      - [Run prisma migrations WITHOUT starting the server](#run-prisma-migrations-without-starting-the-server)
+  - [Table Changes and Database Migrations](#table-changes-and-database-migrations)
+    - [Run prisma migrations WITHOUT starting the server](#run-prisma-migrations-without-starting-the-server)
       - [Start API Server without prisma migrations](#start-api-server-without-prisma-migrations)
   - [Dependencies](#dependencies)
     - [What is uv?](#what-is-uv)
@@ -33,9 +33,7 @@ After initially cloning the repository, follow the steps outlined [**here**](./P
 
 ### 2. Install project dependencies with uv
 
-Since this is Python, you will need to set up and activate a new virtual environment before adding dependencies.
-
-Run the following in the project root (where `pyproject.toml` can be found) to install project dependencies from the included `uv.lock` file.\
+After completing the pre-setup phase, run the following in the project root (where `pyproject.toml` can be found) to install project dependencies from the included `uv.lock` file.\
 Note: this will also sync your database to the contents of your `schema.prisma` file, as well as generate the Prisma client for you. As such, it will fail unless you have completed [**pre-setup**](./PRE_SETUP.md), i.e.:
 
 1. Create a database
@@ -47,11 +45,14 @@ If you have `make` installed, you can use the following convenience command:
 make add-deps
 ```
 
-If you don't have `make` installed, run these three commands:
+If you don't have `make` installed, run these commands:
 
 ```bash
-# 3. Install dependencies
+# 1. Install dependencies
 $. uv pip install -r pyproject.toml 
+
+# 2. Sync database and generate prisma client
+$. uv run prisma db push
 ```
 
 ### 3. Run the project
@@ -75,7 +76,7 @@ $. uv run dev.py
 
 See [additional scripts](#additional-uv-scripts) for commands to update one or more dependencies.
 
-### 4. Table Changes and Database Migrations
+## Table Changes and Database Migrations
 
 To add (or change) your database:
 
@@ -98,7 +99,7 @@ If you don't have `make` installed, run this command instead:
 $. uv run dev.py --migrate
 ```
 
-#### Run prisma migrations WITHOUT starting the server
+### Run prisma migrations WITHOUT starting the server
 
 You can run migrations alone without starting or re-starting the server.
 

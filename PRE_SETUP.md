@@ -82,10 +82,6 @@ Now let's get inside the python project.
 
    > The `schema.prisma` file can be changed often. However, breaking changes may wipe your seed data if you use `prisma db push`, so this is a good time to be reckless.
 
-And now you're MOAR REDDY to get started.
-
-Return to [the main README](./README.md#development) to get you some dependencies.
-
 ## 5. Create a virtual environment target for dependencies
 
 If you have `make` installed, create a new virtual environment for `uv`'s dependencies:
@@ -115,3 +111,7 @@ If you use **VSCode** for development, follow these steps to ensure it can resol
 1. Open your **Commands** menu (mac: `cmd + shift + P`; windows: `ctrl + shift + p`)
 2. Search for **Python: Select Interpreter** and click on it
 3. A virtual environment target dropdown will open: select the `./.venv/bin/python` environment
+
+And now you're MOAR REDDY to get started.
+
+Return to [the main README](./README.md#2-install-project-dependencies-with-uv) to get you some dependencies.
