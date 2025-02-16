@@ -113,6 +113,8 @@ Documentation links are provided for each dependency.
 - [`py_webauthn`](https://pypi.org/project/webauthn/): Python3 server-side [WebAuthN API implementation](https://www.w3.org/TR/webauthn-2/). Enables passphrase authentication.
 - [`prisma` (**Prisma Client Python**)](https://prisma-client-py.readthedocs.io/en/stable/): a Python port of a code-first ORM framework for NodeJS backends.
   - For the full API, visit the Prisma ORM docs [**here**](https://www.prisma.io/)
+- [`bump-my-version`](https://callowayproject.github.io/bump-my-version/): semantic project version bumping with `make`
+- [GNU `make`](https://www.gnu.org/software/make/manual/make.html): For running makefiles. Probably already exists on your system.
 
 ### What is uv?
 
