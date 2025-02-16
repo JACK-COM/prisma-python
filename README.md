@@ -1,4 +1,4 @@
-# Prisma Python
+# 🐍 *Prisma Python*
 
 A project template for a Python-backend API. Uses **Prisma**, **FastAPI**, **DotEnv**, and **WebAuthN**, with **uv** for project and dependency management.\
 See [dependencies](#dependencies) for the list, as well as documentation links.
@@ -9,7 +9,7 @@ If you are familiar with any of the [dependencies](#dependencies) and/or Python,
 
 ## Table of Contents
 
-- [Prisma Python](#prisma-python)
+- [🐍 *Prisma Python*](#-prisma-python)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
     - [Before you start](#before-you-start)
