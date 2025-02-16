@@ -8,6 +8,10 @@ Listing changes from the last 20 commits:
 
 * updates readme
 
+* Updates changelog
+
+* updates readme
+
 * updates make setup commands and readme
 
 * activate uv venv after creation
@@ -55,6 +59,4 @@ Listing changes from the last 20 commits:
 * adds bump-my-version
 
 * adds makefile commands for package bump, generating changelog
-
-* INITIAL COMMIT
 
