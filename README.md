@@ -18,9 +18,8 @@ If you are familiar with any of the [dependencies](#dependencies) and/or Python,
     - [2. Run the project](#2-run-the-project)
       - [Development Environment](#development-environment)
       - [Table Changes and Database Migrations](#table-changes-and-database-migrations)
-      - [Run API without prisma migrations](#run-api-without-prisma-migrations)
-        - [1. call fastapi with uv](#1-call-fastapi-with-uv)
-        - [2. run fastapi with or without main filename](#2-run-fastapi-with-or-without-main-filename)
+      - [Run prisma migrations WITHOUT starting the server](#run-prisma-migrations-without-starting-the-server)
+      - [Start API Server without prisma migrations](#start-api-server-without-prisma-migrations)
   - [Dependencies](#dependencies)
     - [What is uv?](#what-is-uv)
     - [Adding dependencies with uv](#adding-dependencies-with-uv)
@@ -57,6 +56,12 @@ Run the following in the project root (where `pyproject.toml` can be found). Thi
 $. uv pip install -r pyproject.toml
 ```
 
+If you have `make` installed, you can use the following convenience command:
+
+```bash
+$. make setup
+```
+
 ### 2. Run the project
 
 #### Development Environment
@@ -68,7 +73,11 @@ This will run the application in dev mode.
 $. uv run dev.py
 ```
 
-`dev.py` accepts an optional `--migrate` boolean flag. When present, it will trigger a prisma migration to sync your db with the `schema.prisma` file before starting up. See [Table Changes](#table-changes-and-database-migrations) below.
+If you have `make` installed, you can use the following convenience command:
+
+```bash
+$. make start
+```
 
 #### Table Changes and Database Migrations
 
@@ -77,29 +86,49 @@ To add (or change) your database:
 1. Modify the `schema.prisma` file (add tables/columns/etc) and save your changes
 2. Restart the app and include the `--migrate` flag to apply changes to the database before the server starts up.
 
+`dev.py` accepts an optional `--migrate` boolean flag that triggers a prisma migration to sync your db with the `schema.prisma` file before starting up. (see below)
+
 ```bash
 $. uv run dev.py --migrate
 ```
 
-This allows you to sync your changes by simply re-starting the dev server.
-
-#### Run API without prisma migrations
-
-If you don't care at all about using prisma the migration script, use any of the following to start the project:
-
-##### 1. call fastapi with uv
+If you have `make` installed, you can use the following convenience command for the same thing:
 
 ```bash
-$. uv run fastapi dev main.py
+$. make migrate-start
 ```
 
-##### 2. run fastapi with or without main filename
+This allows you to sync your changes by simply re-starting the dev server.
+
+#### Run prisma migrations WITHOUT starting the server
+
+You can run migrations alone without starting or re-starting the server.
 
 ```bash
-# Option 1
+$. uv run scripts/db_migrate.py
+```
+
+If you have `make` installed, you can use the following convenience command:
+
+```bash
+$. make migrate
+```
+
+#### Start API Server without prisma migrations
+
+If you don't want to use the prisma migration script, any of the following commands will start the server:
+
+```bash
+# 1. Shortest: use "make" command to call fastapi with uv
+$. make start
+
+# 2. Preferred: call fastapi with uv (used by "make start" above)
+$. uv run fastapi dev main.py
+
+# 3. Call fastapi directly with entry file:
 $. fastapi dev main.py
 
-# Option 2
+# 4. Call fastapi directly without entry file (assumes it is "main.py")
 $. fastapi dev
 ```
 
