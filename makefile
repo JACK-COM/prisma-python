@@ -29,6 +29,7 @@ changelog: ## | Generate a changelog for the last 20 commits
 
 first-run: ## | create a virtual environment & install project dependencies
 	uv venv
+	source .venv/bin/activate
 	uv pip install -r pyproject.toml
 
 
