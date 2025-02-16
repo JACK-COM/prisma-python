@@ -6,6 +6,14 @@ Generated on Saturday, February 15, 2025
 
 Listing changes from the last 20 commits:
 
+* adds make command for global dependency update
+
+* adds instructions for setting up virtual environment before installing dependencies.
+
+* renames and updates setup command for dependency installation
+
+* Updates changelog
+
 * updates readme and makefile
 
 * Updates changelog
