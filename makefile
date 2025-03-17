@@ -13,19 +13,20 @@ changelog: ## | Generate a changelog for the last 20 commits
 	echo "Generated on `date +'%A, %B %d, %Y'`" >> CHANGELOG.md
 	echo "" >> CHANGELOG.md
 
-	echo "## Latest changes" >> CHANGELOG.md
+	echo "## Updates" >> CHANGELOG.md
 	echo "" >> CHANGELOG.md
 
-	echo "Listing changes from the last 20 commits:" >> CHANGELOG.md
+	echo "### Changes from the last 20 commits" >> CHANGELOG.md
 	echo "" >> CHANGELOG.md
 
 	# Print the last 20 commit subject-lines to changelog
 	# git log -20 --no-merges --format=%B --pretty=%s >> CHANGELOG.md
 	git log -20 --no-merges --format=%B >> CHANGELOG.md
 
-	echo "Changelog generated.\n"
-	echo "Committing changelog:"
-	git add . && git commit -m "* Updates changelog"
+	echo "Changelog generated.\n\nCommitting and pushing changelog:"
+	git add .
+	git commit -m "chore: Updates changelog"
+	git push -u 
 
 
 venv: ## | create a virtual environment
